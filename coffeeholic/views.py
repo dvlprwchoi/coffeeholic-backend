@@ -1,7 +1,7 @@
 from rest_framework import generics, permissions
 from .models import CoffeeShop
 from .serializers import CoffeeShopSerializer
-from coffeeholic.permissions import IsOwnerReadOnly
+from coffeeholic.permissions import IsOwnerOrReadOnly
 
 
 class CoffeeShopList(generics.ListCreateAPIView):
@@ -16,4 +16,4 @@ class CoffeeShopList(generics.ListCreateAPIView):
 class CoffeeShopDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = CoffeeShop.objects.all()
     serializers_class = CoffeeShopSerializer
-    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+    permission_classes = [IsOwnerOrReadOnly]
