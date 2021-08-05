@@ -6,7 +6,7 @@ from coffeeholic.permissions import IsOwnerOrReadOnly
 
 class CoffeeShopList(generics.ListCreateAPIView):
     queryset = CoffeeShop.objects.all()
-    serializers_class = CoffeeShopSerializer
+    serializer_class = CoffeeShopSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
     def perform_create(self, serializer):
@@ -15,5 +15,5 @@ class CoffeeShopList(generics.ListCreateAPIView):
 
 class CoffeeShopDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = CoffeeShop.objects.all()
-    serializers_class = CoffeeShopSerializer
+    serializer_class = CoffeeShopSerializer
     permission_classes = [IsOwnerOrReadOnly]
